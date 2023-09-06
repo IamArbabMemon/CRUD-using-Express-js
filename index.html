@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add CSS styles to make the table elegant */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Elegant Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+<script>
+
+
+const tableBody = document.querySelector('tbody');
+
+fetch('http://localhost:3000/employees').then(data =>data.json()).then((data)=>{
+
+    for(let item of data){
+   
+const tr = document.createElement('tr');
+const td1 = document.createElement('td');
+const td2 = document.createElement('td');
+td1.innerText=item.username;
+td2.innerText=item.email;
+tr.append(td1);
+tr.append(td2);
+tableBody.append(tr);
+}
+
+})
+
+
+</script>
+
+
+</body>
+</html>
